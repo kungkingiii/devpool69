@@ -65,39 +65,34 @@
 
     .modal-bg {
       display: none;
+
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.45);
+
+      background: rgba(0, 0, 0, 0.6);
+
       justify-content: center;
       align-items: center;
+
+      z-index: 999;
     }
 
     .modal {
       background: white;
-      width: 320px;
-      padding: 24px;
-      border-radius: 16px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    }
 
-    .modal h2 {
-      margin-top: 0;
+      width: 500px;
+      max-width: 90vw;
+
+      padding: 30px;
+
+      border-radius: 20px;
+
+      text-align: center;
     }
 
     .modal button {
-      margin-top: 16px;
+      margin-top: 20px;
       padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background: #007bff;
-      color: white;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .modal button:hover {
-      background: #005fcc;
     }
   </style>
 </head>
@@ -105,24 +100,77 @@
 <body>
   <div class="game">
     <img src="background.png" class="background">
-    <img src="character.png" class="character">
-    <img src="COMPUTER.png" class="object computer"
-      onclick="openModal('คอมพิวเตอร์', 'ใช้สำหรับเรียนรู้ข้อมูลหรือทำภารกิจ')">
-    <img src="thaiskill.png" class="object thaiskill"
-      onclick="openModal('คอมพิวเตอร์', 'ใช้สำหรับเรียนรู้ข้อมูลหรือทำภารกิจ')">
+    <img src="character.png" class="character" onclick="openModal('aboutMe')">
+    <img src="COMPUTER.png" class="object computer" onclick="openModal('devPool')">
+    <img src="thaiskill.png" class="object thaiskill" onclick="openModal('thaiSkill')">
 
   </div>
-  <script>
-    function openModal(title, text) {
-      document.getElementById("modalTitle").innerText = title;
-      document.getElementById("modalText").innerText = text;
-      document.getElementById("modalBg").style.display = "flex";
+
+  <div id="modalBg" class="modal-bg">
+    <div class="modal">
+
+      <h2 id="modalTitle"></h2>
+
+      <p id="modalText"></p>
+
+      <button onclick="closeModal()">
+        ปิด
+      </button>
+
+    </div>
+  </div>
+
+</body>
+
+<script>
+
+  const data = {
+    devPool: {
+      text: `
+อยากเข้า DevPool เพราะ น่าสนุกดี ไม่ได้ code นานแล้ว จะได้รื้อฟื้นความรู้เก่าๆและได้เรียนรู้ skill ใหม่ๆด้วย ตอนนี้ยังมีเรื่องที่ไม่รู้เกี่ยวกับ programing อีกเยอะ เป็นโอกาสดีที่ได้เรียนรู้อะไรใหม่ๆเพิ่ม
+  `,
+      title: "ทำไมถึงอยากเข้า DevPool"
+
+    },
+    thaiSkill: {
+      text: `
+สังกัด: สชก.(บก-ท)
+ตำแหน่ง: content delivery
+รายละเอียดงาน:อยู่หน่วยธุรกิจ Thaiskill มีหน้าที่หลักคือดูแลเว็บ PEA Academy
+แต่ดูแค่หน้าเว็บเหมือนแอดมิน ช่วยลูกค้าแก้ปัญหาการใช้งาน เก็บ requirement ของฝั่งลูกค้าและฝั่งคนในทีม เพื่อประสานงานปรัปรุงและแก้ไขเว็บกับบริษัท
+ลงหลักสูตรทุกหลักสูตรบนเว็บ Pea Academy และส่งรายงานผลการเรียนของพนักงานไฟฟ้าให้ ownwer ออกแบบปกหลักสูตร ใบ certificate
+ทำ dashboard สรุปรายได้ของ thai skill ทำเคลียร์เงิน ยืมเงิน สำหรับจัดหลักสูตรอบรม และออกหน้างานไปจัดหลักสูตรต่างจังหวัด
+  `,
+      title: "งานปัจจุบัน"
+    },
+    aboutMe: {
+      text: `
+ชื่อ: ชนิสรา หงษ์เส็ง 
+ชื่อเล่น: แพ็ค
+รหัสพนักงาน: 9013444
+  `,
+      title: "About Me"
     }
 
-    function closeModal() {
-      document.getElementById("modalBg").style.display = "none";
-    }
-  </script>
-</body>
+  }
+
+  function openModal(key) {
+
+    const dataOpen = data[key];
+
+    document.getElementById("modalTitle").innerText = dataOpen.title;
+
+    document.getElementById("modalText").innerText = dataOpen.text;
+
+
+    document.getElementById("modalBg").style.display = "flex";
+  }
+
+  function closeModal() {
+
+    document.getElementById("modalBg").style.display = "none";
+  }
+
+</script>
 
 </html>
