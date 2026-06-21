@@ -3,96 +3,127 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Me</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: #000;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .game {
       position: relative;
-      width: 100vw;
-      height: 100vh;
+      width: min(100vw, 177.78vh);
+      height: min(56.25vw, 100vh);
       overflow: hidden;
+      background: #000;
     }
 
     .background {
       position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-
     .character {
       position: absolute;
+      left: 55%;
+      bottom: 0%;
+      width: 47%;
+
+      transform: translateX(-50%);
       cursor: pointer;
       transition: 0.2s;
-      left: 55%;
-      bottom: 3%;
-      transform: translateX(-50%);
-      width: 35vw;
-      max-width: 1000px;
-      min-width: 750px;
+      z-index: 2;
     }
 
     .character:hover {
-      transform: translateX(-50%) scale(1.08);
+      transform: translateX(-50%) scale(1.05);
     }
+
 
     .object {
       position: absolute;
       cursor: pointer;
       transition: 0.2s;
+      z-index: 3;
     }
 
     .object:hover {
-      transform: scale(1.08);
+      transform: scale(1.05);
     }
+
 
     .computer {
-      left: 75%;
-      top: 20%;
-      width: 18vw;
-      max-width: 400px;
-      min-width: 250px;
+      left: 76%;
+      top: 23%;
+      width: 18%;
     }
 
+
     .thaiskill {
-      right: 65%;
-      top: 5%;
-      width: 25vw;
-      max-width: 400px;
-      min-width: 250px;
+      left: 15%;
+      top: 4%;
+      width: 25%;
     }
+
 
     .modal-bg {
       display: none;
-
       position: fixed;
       inset: 0;
-
       background: rgba(0, 0, 0, 0.6);
 
       justify-content: center;
       align-items: center;
-
       z-index: 999;
     }
 
-    .modal {
-      background: white;
 
-      width: 500px;
-      max-width: 90vw;
+    .modal {
+      background: rgb(160, 151, 145);
+      width: min(500px, 90vw);
+      max-height: 80vh;
+      overflow-y: auto;
 
       padding: 30px;
-
       border-radius: 20px;
-
       text-align: center;
+    }
+
+    .modal h2 {
+      margin-top: 0;
+    }
+
+    .modal p {
+      white-space: pre-line;
+      text-align: left;
+      line-height: 1.6;
     }
 
     .modal button {
       margin-top: 20px;
       padding: 10px 20px;
+      cursor: pointer;
     }
   </style>
 </head>
