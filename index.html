@@ -118,7 +118,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(37, 35, 35, 0.6);
 
       justify-content: center;
       align-items: center;
@@ -127,7 +127,7 @@
 
 
     .modal {
-      background: rgb(160, 151, 145);
+      background: rgb(171, 182, 161);
       width: min(500px, 90vw);
       max-height: 80vh;
       overflow-y: auto;
@@ -145,12 +145,34 @@
       white-space: pre-line;
       text-align: left;
       line-height: 1.6;
+
     }
 
     .modal button {
       margin-top: 20px;
       padding: 10px 20px;
       cursor: pointer;
+      background: rgb(198, 209, 179);
+    }
+
+    .modal button:hover {
+      background: rgb(104, 110, 74);
+    }
+
+    #modalLink {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+
+      background: #7f9970;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    #modalLink:hover {
+      background: rgb(231, 235, 212);
+      color: rgb(12, 12, 12);
     }
   </style>
 </head>
@@ -177,6 +199,9 @@
 
       <p id="modalText"></p>
 
+      <a id="modalLink" target="_blank">
+      </a>
+
       <button onclick="closeModal()">
         ปิด
       </button>
@@ -191,7 +216,7 @@
   const data = {
     devPool: {
       text: `
-อยากเข้า DevPool เพราะ น่าสนุกดี ไม่ได้ code นานแล้ว จะได้รื้อฟื้นความรู้เก่าๆและได้เรียนรู้ skill ใหม่ๆด้วย ตอนนี้ยังมีเรื่องที่ไม่รู้เกี่ยวกับ programing อีกเยอะ เป็นโอกาสดีที่ได้เรียนรู้อะไรใหม่ๆเพิ่ม
+อยากเข้า DevPool เพราะ น่าสนุกดี ไม่ได้ code นานแล้ว จะได้รื้อฟื้นความรู้เก่าๆและได้เรียนรู้ skill ใหม่ๆด้วย ตอนนี้ยังมีเรื่องที่ไม่รู้เกี่ยวกับการ dev อีกเยอะ เป็นโอกาสดีที่ได้เรียนรู้อะไรใหม่ๆเพิ่ม
   `,
       title: "ทำไมถึงอยากเข้า DevPool"
 
@@ -201,11 +226,13 @@
 สังกัด: สชก.(บก-ท)
 ตำแหน่ง: content delivery
 รายละเอียดงาน:อยู่หน่วยธุรกิจ Thaiskill มีหน้าที่หลักคือดูแลเว็บ PEA Academy
-แต่ดูแค่หน้าเว็บเหมือนแอดมิน ช่วยลูกค้าแก้ปัญหาการใช้งาน เก็บ requirement ของฝั่งลูกค้าและฝั่งคนในทีม เพื่อประสานงานปรัปรุงและแก้ไขเว็บกับบริษัท
-ลงหลักสูตรทุกหลักสูตรบนเว็บ Pea Academy และส่งรายงานผลการเรียนของพนักงานไฟฟ้าให้ ownwer ออกแบบปกหลักสูตร ใบ certificate
-ทำ dashboard สรุปรายได้ของ thai skill ทำเคลียร์เงิน ยืมเงิน สำหรับจัดหลักสูตรอบรม และออกหน้างานไปจัดหลักสูตรต่างจังหวัด
+- ดูแค่หน้าเว็บเหมือนแอดมิน ช่วยลูกค้าแก้ปัญหาการใช้งาน เก็บ requirement ของฝั่งลูกค้าและฝั่งคนในทีม เพื่อประสานงานปรัปรุงและแก้ไขเว็บกับบริษัท
+- ลงหลักสูตรทุกหลักสูตรบนเว็บ Pea Academy และส่งรายงานผลการเรียนของพนักงานไฟฟ้าให้ ownwer ออกแบบปกหลักสูตร ใบ certificate
+- ทำ dashboard สรุปรายได้ของ thai skill ทำเคลียร์เงิน ยืมเงิน สำหรับจัดหลักสูตรอบรม และออกหน้างานไปจัดหลักสูตรต่างจังหวัด
   `,
-      title: "งานปัจจุบัน"
+      title: "งานปัจจุบัน",
+      link: "https://www.peaacademy.org/",
+      linkText: "ไปยัง PEA Academy"
     },
     aboutMe: {
       text: `
@@ -225,6 +252,16 @@
     document.getElementById("modalTitle").innerText = dataOpen.title;
 
     document.getElementById("modalText").innerText = dataOpen.text;
+
+    const link = document.getElementById("modalLink");
+
+    if (dataOpen.link) {
+      link.href = dataOpen.link;
+      link.innerText = dataOpen.linkText;
+      link.style.display = "inline-block";
+    } else {
+      link.style.display = "none";
+    }
 
 
     document.getElementById("modalBg").style.display = "flex";
