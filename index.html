@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Tutorial Game</title>
+  <title>Me</title>
 
   <style>
     .game {
@@ -18,6 +18,49 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+
+    .character {
+      position: absolute;
+      cursor: pointer;
+      transition: 0.2s;
+      left: 55%;
+      bottom: 3%;
+      transform: translateX(-50%);
+      width: 35vw;
+      max-width: 1000px;
+      min-width: 750px;
+    }
+
+    .character:hover {
+      transform: translateX(-50%) scale(1.08);
+    }
+
+    .object {
+      position: absolute;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .object:hover {
+      transform: scale(1.08);
+    }
+
+    .computer {
+      left: 75%;
+      top: 20%;
+      width: 18vw;
+      max-width: 400px;
+      min-width: 250px;
+    }
+
+    .thaiskill {
+      right: 65%;
+      top: 5%;
+      width: 25vw;
+      max-width: 400px;
+      min-width: 250px;
     }
 
     .modal-bg {
@@ -62,6 +105,12 @@
 <body>
   <div class="game">
     <img src="background.png" class="background">
+    <img src="character.png" class="character">
+    <img src="COMPUTER.png" class="object computer"
+      onclick="openModal('คอมพิวเตอร์', 'ใช้สำหรับเรียนรู้ข้อมูลหรือทำภารกิจ')">
+    <img src="thaiskill.png" class="object thaiskill"
+      onclick="openModal('คอมพิวเตอร์', 'ใช้สำหรับเรียนรู้ข้อมูลหรือทำภารกิจ')">
+
   </div>
   <script>
     function openModal(title, text) {
