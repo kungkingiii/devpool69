@@ -1,12 +1,138 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="th">
 <head>
-    <title>Hello World</title>
+  <meta charset="UTF-8" />
+  <title>Tutorial Game</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #dff3ff;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .game {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(#b9ecff, #e8f8ff);
+    }
+
+    .character {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 100px;
+      user-select: none;
+    }
+
+    .point {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      background: #ff4d6d;
+      border-radius: 50%;
+      border: 4px solid white;
+      cursor: pointer;
+      animation: pulse 1s infinite;
+    }
+
+    .point:hover {
+      background: #ff003c;
+    }
+
+    .point1 {
+      left: 35%;
+      top: 45%;
+    }
+
+    .point2 {
+      left: 60%;
+      top: 40%;
+    }
+
+    .point3 {
+      left: 50%;
+      top: 65%;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    .modal-bg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal {
+      background: white;
+      width: 320px;
+      padding: 24px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .modal h2 {
+      margin-top: 0;
+    }
+
+    .modal button {
+      margin-top: 16px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .modal button:hover {
+      background: #005fcc;
+    }
+  </style>
 </head>
 
 <body>
-    <h1>Hello World</h1>
-</body>
+  <div class="game">
+    <div class="character">🧍‍♀️</div>
 
+    <div class="point point1" onclick="openModal('หัวข้อที่ 1', 'นี่คือจุดเริ่มต้นของเกม ผู้เล่นต้องกดจุดต่าง ๆ เพื่ออ่านคำอธิบาย')"></div>
+
+    <div class="point point2" onclick="openModal('หัวข้อที่ 2', 'ตรงนี้คือคำแนะนำเพิ่มเติม เช่น วิธีควบคุมตัวละคร หรือกติกาของเกม')"></div>
+
+    <div class="point point3" onclick="openModal('หัวข้อที่ 3', 'เมื่ออ่านครบทุกจุด ผู้เล่นจะเข้าใจวิธีเล่นเกมนี้')"></div>
+  </div>
+
+  <div class="modal-bg" id="modalBg">
+    <div class="modal">
+      <h2 id="modalTitle">หัวข้อ</h2>
+      <p id="modalText">ข้อความ</p>
+      <button onclick="closeModal()">ปิด</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal(title, text) {
+      document.getElementById("modalTitle").innerText = title;
+      document.getElementById("modalText").innerText = text;
+      document.getElementById("modalBg").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("modalBg").style.display = "none";
+    }
+  </script>
+</body>
 </html>
